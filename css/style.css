@@ -9,8 +9,7 @@
 main {
     background-color: #7fffd3;
     width: 100%;
-    /* test */
-    height: 600px;
+    height: 800px;
 }
 
 /* Header */
@@ -45,9 +44,33 @@ header img {
 /* Main */
 
 #main-grid {
-    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 70%;
+    height: 100%;
     margin: 0 auto;
+    padding: 4rem 0;
+}
+
+.square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid black;
-    /* test */
-    height: 60%;
+}
+
+.easy .square {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+
+.hard .square {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.crazy .square {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
 }

@@ -111,7 +111,6 @@ function gameStart() {
 
         // Create the game-over text in the DOM
         userTextGameOver.append(textGameOver);
-        bombs.classList.add("safe-number");
 
         // After the game-over text do not let the user to click on other numbers
         mainGrid.style.pointerEvents = "none";

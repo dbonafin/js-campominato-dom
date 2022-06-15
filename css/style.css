@@ -47,7 +47,7 @@ header img {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    width: 70%;
+    width: 50%;
     height: 100%;
     margin: 0 auto;
     padding: 4rem 0;
@@ -58,6 +58,7 @@ header img {
     align-items: center;
     justify-content: center;
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .easy .square {
@@ -73,4 +74,12 @@ header img {
 .crazy .square {
     width: calc(100% / 7);
     height: calc(100% / 7);
+}
+
+.safe-number {
+    background-color: #6495ec;
+}
+
+.bomb-number {
+    background-color: #dc143c;
 }

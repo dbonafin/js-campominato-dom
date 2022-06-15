@@ -68,7 +68,35 @@ function gameStart() {
 
             // Append the cells to the grid in the DOM
             mainGrid.append(newSquare);
+
+            // Logic engine of the game
+            newSquare.addEventListener("click", checkSafeOrBomb);
+
+            function checkSafeOrBomb() {
+                let gameGoesOn = true;
+                while (gameGoesOn) {
+
+                // If the userNumber is a bombNumber - game over
+                if (bombs.includes(i)) {
+                    newSquare.classList.add("bomb-number")
+                    alert(`Hai perso! Tentativi corretti: ${safeNumbersArray.length}`);
+                    gameGoesOn = false;
+                } else {
+                    // Push the userNumber in the safeNumbersArray - if not already present
+                    if (!safeNumbersArray.includes(i)) {
+                        newSquare.classList.add("safe-number")
+                        safeNumbersArray.push(i);
+                    }
+
+                    // If the user reaches the number of maxAttempts - win alert
+                    if (safeNumbersArray.length === maxAttempts) {
+                        alert("Hai vinto! Hai raggiunto il numero massimo di tentativi corretti");
+                        gameGoesOn = false;
+                    }
+                }
+            }
         }
+        
     }
 
     // Function that generates the 16 bomb-numbers
@@ -91,7 +119,8 @@ function gameStart() {
         return bombsArray;
     }
 
-    // // Logic engine of the game
+    
+
     // for (let i = 1; i <= maxRangeLevel; i++) {
     //     console.log(i);
 
@@ -117,4 +146,4 @@ function gameStart() {
     //     }
     // }
 }
-
+}

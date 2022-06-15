@@ -8,9 +8,14 @@ function gameStart() {
     // Connect the DOM with the js elements
     const mainGrid = document.getElementById("main-grid");
 
-    // Reset of the grid at every click of the play button
+    // Message in case of game over
+    const userTextGameOver = document.getElementById("game-over");
+
+    // Reset of the gri at every click of the play button
     mainGrid.innerHTML = " ";
     mainGrid.className = " ";
+    userTextGameOver.innerHTML = " ";
+    mainGrid.style.pointerEvents = "auto";
 
     // Ask the user the difficulty level of the game
     const userLevel = document.getElementById("level-choice").value;
@@ -49,7 +54,7 @@ function gameStart() {
 
     // FUNCTIONS //
 
-
+ 
     //Function that generates the main grid container
     generateMainGrid();
     function generateMainGrid() {
@@ -69,18 +74,16 @@ function gameStart() {
             mainGrid.append(newSquare);
         }
     }
+    
 
     // Function that checks if the number is a safeNumber or a bombNumber
     function checkSafeOrBomb() {
         const thisNumber = parseInt(this.querySelector("span").innerHTML);
-        console.log(thisNumber);
 
         // If the userNumber is a bombNumber - game over - reset of the grid
         if (bombs.includes(thisNumber)) {
             this.classList.add("bomb-number");
-            alert(`Hai perso! Tentativi corretti: ${safeNumbersArray.length}`);
-            mainGrid.innerHTML = " ";
-            mainGrid.className = " ";
+            userGameOver();
         } else {
             // Push the userNumber in the safeNumbersArray - if not already present
             if (!safeNumbersArray.includes(thisNumber)) {
@@ -93,19 +96,38 @@ function gameStart() {
                 alert("Hai vinto! Hai raggiunto il numero massimo di tentativi corretti");
             }
         }
-        this.style.pointerEvents = 'none';
-
+        // Do not let the user to click on the same number more times
+        this.style.pointerEvents = "none";
     }
-
     
 
-    // Function that generates the 16 bomb-numbers
-    function genRandomNumber(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) ) + min;
-    }
+    // Function that appears when the user clicks a bombNumber ---> game over
+    function userGameOver() {
+        const textGameOver = document.createElement("p");
+        textGameOver.innerHTML = 
+        `<div>
+        Hai perso! Hai indovinato i seguenti numeri: ${safeNumbersArray}<br> Ritenta e sarai più fortunato
+        </div>`;
 
-   // Function that push the bombNumbers in the bombsArray
-   function generateBombNumbers(bombNumbers, minRangeLevel, maxRangeLevel) {
+        // Create the game-over text in the DOM
+        userTextGameOver.append(textGameOver);
+        bombs.classList.add("safe-number");
+
+        // After the game-over text do not let the user to click on other numbers
+        mainGrid.style.pointerEvents = "none";
+    }
+    
+}
+
+
+// Function that generates the 16 bomb-numbers
+function genRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+
+// Function that push the bombNumbers in the bombsArray
+function generateBombNumbers(bombNumbers, minRangeLevel, maxRangeLevel) {
     const bombsArray = [];
     while (bombsArray.length < bombNumbers) {
         const randomBomb = genRandomNumber(minRangeLevel, maxRangeLevel);
@@ -116,6 +138,10 @@ function gameStart() {
         }
     }
 
-        return bombsArray;
-    }
+    return bombsArray;
 }
+
+
+
+
+

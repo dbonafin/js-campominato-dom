@@ -75,10 +75,12 @@ function gameStart() {
         const thisNumber = parseInt(this.querySelector("span").innerHTML);
         console.log(thisNumber);
 
-        // If the userNumber is a bombNumber - game over
+        // If the userNumber is a bombNumber - game over - reset of the grid
         if (bombs.includes(thisNumber)) {
             this.classList.add("bomb-number");
             alert(`Hai perso! Tentativi corretti: ${safeNumbersArray.length}`);
+            mainGrid.innerHTML = " ";
+            mainGrid.className = " ";
         } else {
             // Push the userNumber in the safeNumbersArray - if not already present
             if (!safeNumbersArray.includes(thisNumber)) {

@@ -7,9 +7,47 @@
 /* Common */
 
 main {
-    background-color: lightblue;
+    background-color: #7fffd3;
     width: 100%;
     /* test */
     height: 600px;
 }
 
+/* Header */
+
+header {
+    padding: 1.5rem 0;
+}
+
+h1 {
+    margin: 0 1rem;
+    font-weight:700;
+}
+
+header img {
+    width: 40px;
+    height: 40px;
+}
+
+.ms_slc_padding {
+    padding: 0.2rem 4rem;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.ms_btn_padding {
+    padding: 0.1rem 1.5rem;
+    background-color: lightgray;
+    border: 1px solid #767676;
+    border-radius: 5px;
+}
+
+/* Main */
+
+#main-grid {
+    width: 60%;
+    margin: 0 auto;
+    border: 1px solid black;
+    /* test */
+    height: 60%;
+}

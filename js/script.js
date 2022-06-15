@@ -91,7 +91,11 @@ function gameStart() {
                 alert("Hai vinto! Hai raggiunto il numero massimo di tentativi corretti");
             }
         }
+        this.style.pointerEvents = 'none';
+
     }
+
+    
 
     // Function that generates the 16 bomb-numbers
     function genRandomNumber(min, max) {

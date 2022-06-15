@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Common */
+
+main {
+    background-color: lightblue;
+    width: 100%;
+    /* test */
+    height: 600px;
+}
+

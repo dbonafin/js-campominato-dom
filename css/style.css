@@ -41,8 +41,8 @@ header img {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    width: 50%;
-    height: 100%;
+    width: 740px;
+    height: 800px;
     padding: 4rem 0;
 }
 

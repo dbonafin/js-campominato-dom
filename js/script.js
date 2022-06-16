@@ -106,14 +106,30 @@ function gameStart() {
         const textGameOver = document.createElement("p");
         textGameOver.innerHTML = 
         `<div>
-        Hai perso! Hai indovinato i seguenti numeri: ${safeNumbersArray}<br> Ritenta e sarai più fortunato
+        Hai perso! Hai indovinato i seguenti numeri: ${safeNumbersArray}<br> Ritenta e sarai più fortunato!
         </div>`;
 
         // Create the game-over text in the DOM
         userTextGameOver.append(textGameOver);
 
         // After the game-over text do not let the user to click on other numbers
-        mainGrid.style.pointerEvents = "none";
+        // mainGrid.style.pointerEvents = "none";
+
+        // After the game over events
+        const allSquares = document.querySelectorAll(".square");
+
+        for (let i = 0; i < allSquares.length; i++) {
+
+            // Do not let the user to click on other numbers
+            const specificSquare = allSquares[i];
+            specificSquare.style.pointerEvents = "none";
+
+            // Show all the bombs in the grid
+            const specificSquareNumber = parseInt(specificSquare.querySelector("span").innerHTML);
+            if (bombs.includes(specificSquareNumber)) {
+                specificSquare.classList.add("bomb-number")
+            }
+        }
     }
     
 }
